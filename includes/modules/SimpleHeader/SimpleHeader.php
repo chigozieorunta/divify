@@ -1,35 +1,41 @@
 <?php
 
-class SimpleHeader extends ET_Builder_Module {
+class SIMP_SimpleHeader extends ET_Builder_Module {
 
-	public $slug       = 'simple_header';
+	public $slug       = 'simp_simple_header';
 	public $vb_support = 'on';
 
-	protected $module_credits = array(
-		'module_uri' => 'https://github.com/chigozieorunta/divify',
-		'author'     => 'Chigozie Orunta',
-		'author_uri' => 'https://linkedin.com/in/chigozieorunta',
-	);
-
 	public function init() {
-		$this->name = esc_html__( 'Hello World', 'divi-divify' );
+		$this->name = esc_html__( 'Simple Header', 'simp-simple-extension' );
 	}
 
 	public function get_fields() {
 		return array(
-			'content' => array(
-				'label'           => esc_html__( 'Content', 'divi-divify' ),
+			'heading'     => array(
+				'label'           => esc_html__( 'Heading', 'simp-simple-extension' ),
+				'type'            => 'text',
+				'option_category' => 'basic_option',
+				'description'     => esc_html__( 'Input your desired heading here.', 'simp-simple-extension' ),
+				'toggle_slug'     => 'main_content',
+			),
+			'content'     => array(
+				'label'           => esc_html__( 'Content', 'simp-simple-extension' ),
 				'type'            => 'tiny_mce',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'divi-divify' ),
+				'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'simp-simple-extension' ),
 				'toggle_slug'     => 'main_content',
 			),
 		);
 	}
 
-	public function render( $attrs, $content = null, $render_slug ) {
-		return sprintf( '<h1>%1$s</h1>', $this->props['content'] );
+	public function render( $unprocessed_props, $content = null, $render_slug ) {
+		return sprintf(
+			'<h1 class="simp-simple-header-heading">%1$s</h1>
+			<p>%2$s</p>',
+			esc_html( $this->props['heading'] ),
+			$this->props['content']
+		);
 	}
 }
 
-new DIVI_HelloWorld;
+new SIMP_SimpleHeader;
