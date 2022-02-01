@@ -14,7 +14,7 @@ class HelloWorld extends Component {
 
     return (
       <h1>
-        <Content/>
+        <div>Hello <Content/></div>
       </h1>
     );
   }
