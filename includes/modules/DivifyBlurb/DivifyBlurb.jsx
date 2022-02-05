@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 import './style.css';
 
 
-class HelloWorld extends Component {
+class DivifyBlurb extends Component {
 
-  static slug = 'divi_hello_world';
+  static slug = 'divify_blurb';
 
   render() {
     const Content = this.props.content;
@@ -20,4 +20,4 @@ class HelloWorld extends Component {
   }
 }
 
-export default HelloWorld;
+export default DivifyBlurb;
