@@ -4,8 +4,18 @@ import React, { Component } from 'react';
 // Internal Dependencies
 import './style.css';
 
+const HelloWorld = props => {
+  return (
+    <h1>
+      {props.content}
+    </h1>
+  )
+}
 
-class HelloWorld extends Component {
+export default HelloWorld;
+
+
+/*class HelloWorld extends Component {
 
   static slug = 'divi_hello_world';
 
@@ -20,4 +30,4 @@ class HelloWorld extends Component {
   }
 }
 
-export default HelloWorld;
+export default HelloWorld;*/
