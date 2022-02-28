@@ -1,8 +1,8 @@
 <?php
 
-class DIVI_HelloWorld extends ET_Builder_Module {
+class DIVIFY_Blurb extends ET_Builder_Module {
 
-	public $slug       = 'divi_hello_world';
+	public $slug       = 'divify_blub_world';
 	public $vb_support = 'on';
 
 	protected $module_credits = array(
@@ -12,7 +12,7 @@ class DIVI_HelloWorld extends ET_Builder_Module {
 	);
 
 	public function init() {
-		$this->name = esc_html__( 'Hello World', 'divi-divify' );
+		$this->name = esc_html__( 'Divify Blurb', 'divi-divify' );
 	}
 
 	public function get_fields() {
@@ -32,4 +32,4 @@ class DIVI_HelloWorld extends ET_Builder_Module {
 	}
 }
 
-new DIVI_HelloWorld;
+new DIVIFY_Blurb;
