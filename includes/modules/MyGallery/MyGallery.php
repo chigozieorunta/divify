@@ -28,6 +28,11 @@ class MyGallery extends ET_Builder_Module {
 		);
 	}
 
+	public function get_photos() {
+		$query = new WP_Query( array( 'post_type' => 'gallery' ) );
+		$posts = $query->posts;
+	}
+
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
 			'<h1 class="my-gallery-heading">%1$s</h1>
