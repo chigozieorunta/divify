@@ -43,4 +43,4 @@ class MyGallery extends ET_Builder_Module {
 	}
 }
 
-new SIMP_SimpleHeader;
+new MyGallery;
