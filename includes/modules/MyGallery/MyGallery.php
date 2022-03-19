@@ -31,6 +31,16 @@ class MyGallery extends ET_Builder_Module {
 	public function get_photos() {
 		$query = new WP_Query( array( 'post_type' => 'gallery' ) );
 		$posts = $query->posts;
+
+		foreach($posts as $post) {
+			if ( has_post_thumbnail( $post->ID ) ) {
+				$image = wp_get_attachment_image_src( 
+					get_post_thumbnail_id( $post->ID ), 
+					'medium'
+				);
+			}
+		}
+		return $photos;
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
