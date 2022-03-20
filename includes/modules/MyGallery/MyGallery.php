@@ -38,6 +38,9 @@ class MyGallery extends ET_Builder_Module {
 					get_post_thumbnail_id( $post->ID ), 
 					'medium'
 				);
+
+				$photo_image = $image[0];
+				$photo_title = get_the_title( $post->ID );
 			}
 		}
 		return $photos;
