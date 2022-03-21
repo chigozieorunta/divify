@@ -41,6 +41,12 @@ class MyGallery extends ET_Builder_Module {
 
 				$photo_image = $image[0];
 				$photo_title = get_the_title( $post->ID );
+
+				$photos .= sprintf( 
+					'<div><img src="%1$s"><p>%2$s</p></div>',
+					$photo_image,
+					$photo_title
+				);
 			}
 		}
 		return $photos;
