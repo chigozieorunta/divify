@@ -33,7 +33,9 @@ class MyGallery extends ET_Builder_Module {
 		$posts = $query->posts;
 
 		foreach($posts as $post) {
+
 			if ( has_post_thumbnail( $post->ID ) ) {
+
 				$image = wp_get_attachment_image_src( 
 					get_post_thumbnail_id( $post->ID ), 
 					'medium'
@@ -47,7 +49,9 @@ class MyGallery extends ET_Builder_Module {
 					$photo_image,
 					$photo_title
 				);
+
 			}
+			
 		}
 		return $photos;
 	}
