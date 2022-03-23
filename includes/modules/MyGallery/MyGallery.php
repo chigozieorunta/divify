@@ -7,6 +7,10 @@ class MyGallery extends ET_Builder_Module {
 
 	public function init() {
 		$this->name = esc_html__( 'My Gallery', 'my-gallery' );
+
+		add_action( 'wp_enqueue_scripts', function() {
+			wp_enqueue_style( 'my-gallery', './gallery.css' );
+		});
 	}
 
 	public function get_fields() {
@@ -51,7 +55,7 @@ class MyGallery extends ET_Builder_Module {
 				);
 
 			}
-			
+
 		}
 		return $photos;
 	}
