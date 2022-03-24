@@ -63,9 +63,11 @@ class MyGallery extends ET_Builder_Module {
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
 			'<h1 class="my-gallery-heading">%1$s</h1>
-			<div class="my-gallery-content">%2$s</div>',
+			<div class="my-gallery-content">%2$s</div>
+			<div class="my-gallery">%3$s</div>',
 			esc_html( $this->props['heading'] ),
-			$this->props['content']
+			$this->props['content'],
+			$this->get_photos()
 		);
 	}
 }
