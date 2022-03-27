@@ -9,6 +9,15 @@ class MyGallery extends Component {
   state = {
     photos: []
   }
+
+  componentDidMount() {
+    fetch('http://yoursite.com/wp-json/wp/v2/gallery')
+    .then((response) => response.json())
+    .then(allPhotos => {
+        this.setState({ photos: allPhotos });
+    })
+    .catch(error => console.log('Error:', error));
+  }
   	
   render() {
     return (
