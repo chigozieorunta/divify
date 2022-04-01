@@ -1,0 +1,11 @@
+.my-gallery-heading
+.my-gallery-footnote  {
+    text-align: center;
+}
+
+.my-gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3em;
+}
