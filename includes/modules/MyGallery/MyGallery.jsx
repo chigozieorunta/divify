@@ -21,18 +21,18 @@ class MyGallery extends Component {
   	
   render() {
     return (
-		<Fragment>
-			<h1 className="my-gallery-heading">{this.props.heading}</h1>
-			<div className="my-gallery-content">{this.props.content()}</div>
-			<div className="my-gallery">
-				{this.state.photos.map((photo) => (
-					<div>
-					<img src={photo.id} alt={photo.id} />
-					<p>{photo.title.rendered}</p>
-					</div>
-				))}
-			</div>
-		</Fragment>
+		  <Fragment>
+			  <h1 className="my-gallery-heading">{this.props.heading}</h1>
+			  <div className="my-gallery-content">{this.props.content()}</div>
+			  <div className="my-gallery">
+				  {this.state.photos.map((photo) => (
+					  <div>
+					  <img src={photo.id} alt={photo.id} />
+					  <p>{photo.title.rendered}</p>
+					  </div>
+				  ))}
+			  </div>
+		  </Fragment>
     );
   }
 }
