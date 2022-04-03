@@ -60,6 +60,18 @@ class MyGallery extends ET_Builder_Module {
 		return $photos;
 	}
 
+	public function register_api() {
+		register_rest_route(
+			'divify/v1',
+			'my-gallery',
+			array(
+				'methods' => WP_REST_Server::READABLE,
+				'callback' => 'get_json_response',
+				'permission_callback' => '__return_true'
+			)
+		);
+	}
+
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
 			'<h1 class="my-gallery-heading">%1$s</h1>
