@@ -11,7 +11,7 @@ class ComboBox extends Component {
   }
 
   componentDidMount() {
-    fetch('http://yoursite.com/wp-json/wp/v2/gallery')
+    fetch('http://yoursite.com/wp-json/wp/v2/property')
     .then((response) => response.json())
     .then(allCombos => {
         this.setState({ combos: allCombos });
