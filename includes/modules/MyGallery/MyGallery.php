@@ -12,6 +12,8 @@ class MyGallery extends ET_Builder_Module {
 		add_action( 'wp_enqueue_scripts', function() {
 			wp_enqueue_style( 'my-gallery', './gallery.css' );
 		});
+
+		add_action ( 'rest_api_init', 'register_api_endpoint' );
 	}
 
 	public function get_fields() {
