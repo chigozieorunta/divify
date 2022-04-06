@@ -1,0 +1,28 @@
+.my-gallery-heading,
+.my-gallery-content  {
+    text-align: center;
+}
+
+.my-gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2em;
+}
+
+.my-gallery div {
+    width: 22.5%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+}
+
+.my-gallery div > img {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.my-gallery div > p {
+    margin-top: 0.5em;
+    text-align: center;
+}
