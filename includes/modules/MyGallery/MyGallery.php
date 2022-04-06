@@ -63,10 +63,10 @@ class MyGallery extends ET_Builder_Module {
 	public function register_api_endpoint() {
 		register_rest_route(
 			'divify/v1',
-			'my-gallery',
+			'/my-gallery',
 			array(
 				'methods' => WP_REST_Server::READABLE,
-				'callback' => 'get_json_response',
+				'callback' => [ $this, 'get_json_response' ],
 				'permission_callback' => '__return_true'
 			)
 		);
