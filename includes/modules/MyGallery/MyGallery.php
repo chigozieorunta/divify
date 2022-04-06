@@ -4,6 +4,7 @@ class MyGallery extends ET_Builder_Module {
 
 	public $slug       = 'my_gallery';
 	public $vb_support = 'on';
+	private $photos = [];
 
 	public function init() {
 		$this->name = esc_html__( 'My Gallery', 'my-gallery' );
@@ -54,6 +55,12 @@ class MyGallery extends ET_Builder_Module {
 					$photo_title
 				);
 
+				$this->photos[] = array(
+					'id'    => $post->ID,
+					'title' => $photo_title,
+					'image' => $photo_image
+				);
+
 			}
 
 		}
@@ -70,6 +77,10 @@ class MyGallery extends ET_Builder_Module {
 				'permission_callback' => '__return_true'
 			)
 		);
+	}
+
+	public function get_json_response() {
+		return json_decode( $this->photos );
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
