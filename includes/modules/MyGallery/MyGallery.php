@@ -60,7 +60,7 @@ class MyGallery extends ET_Builder_Module {
 		return $photos;
 	}
 
-	public function register_api() {
+	public function register_api_endpoint() {
 		register_rest_route(
 			'divify/v1',
 			'my-gallery',
