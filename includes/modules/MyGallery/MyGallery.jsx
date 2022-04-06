@@ -11,35 +11,28 @@ class MyGallery extends Component {
   }
 
   componentDidMount() {
-
-    fetch('http://divify.local/wp-json/wp/v2/gallery')
-      .then((response) => response.json())
-      .then(allPhotos => {
-          this.setState({ photos: allPhotos });
-      })
-      .catch(error => console.log('Error:', error));
-
+    fetch('http://yoursite.com/wp-json/wp/v2/gallery')
+    .then((response) => response.json())
+    .then(allPhotos => {
+        this.setState({ photos: allPhotos });
+    })
+    .catch(error => console.log('Error:', error));
   }
   	
   render() {
     return (
-     <Fragment>
-       <h1 className="my-gallery-heading">{this.props.heading}</h1>
-        <p className="my-gallery-footnote">{this.props.content()}</p>
-        <div className="my-gallery">
-          {
-            this.state.photos.map(photo => {
-
-              return (
-                <div>
-                  <img src={photo.id} alt={photo.id} />
-                  <p>{photo.title.rendered}</p>
-                </div>
-              )
-            })
-          }
-       </div>
-     </Fragment>
+		  <Fragment>
+			  <h1 className="my-gallery-heading">{this.props.heading}</h1>
+			  <div className="my-gallery-content">{this.props.content()}</div>
+			  <div className="my-gallery">
+				  {this.state.photos.map((photo) => (
+					  <div>
+					  <img src={photo.id} alt={photo.id} />
+					  <p>{photo.title.rendered}</p>
+					  </div>
+				  ))}
+			  </div>
+		  </Fragment>
     );
   }
 }

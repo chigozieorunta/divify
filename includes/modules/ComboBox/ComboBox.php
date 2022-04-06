@@ -1,39 +1,39 @@
 <?php
 
-class MyGallery extends ET_Builder_Module {
+class ComboBox extends ET_Builder_Module {
 
-	public $slug       = 'my_gallery';
+	public $slug       = 'combo_box';
 	public $vb_support = 'on';
 
 	public function init() {
-		$this->name = esc_html__( 'My Gallery', 'my-gallery' );
+		$this->name = esc_html__( 'Combo Box', 'combo-box' );
 
 		add_action( 'wp_enqueue_scripts', function() {
-			wp_enqueue_style( 'my-gallery', './gallery.css' );
+			wp_enqueue_style( 'combo-box', './combo-box.css' );
 		});
 	}
 
 	public function get_fields() {
 		return array(
 			'heading'     => array(
-				'label'           => esc_html__( 'Heading', 'my-gallery' ),
+				'label'           => esc_html__( 'Heading', 'combo-box' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Input your desired heading here.', 'my-gallery' ),
+				'description'     => esc_html__( 'Input your desired heading here.', 'combo-box' ),
 				'toggle_slug'     => 'main_content',
 			),
 			'content'     => array(
-				'label'           => esc_html__( 'Content', 'my-gallery' ),
+				'label'           => esc_html__( 'Content', 'combo-box' ),
 				'type'            => 'tiny_mce',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'my-gallery' ),
+				'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'combo-box' ),
 				'toggle_slug'     => 'main_content',
 			),
 		);
 	}
 
-	public function get_photos() {
-		$query = new WP_Query( array( 'post_type' => 'gallery' ) );
+	public function get_cpt() {
+		$query = new WP_Query( array( 'post_type' => 'property' ) );
 		$posts = $query->posts;
 
 		foreach($posts as $post) {
@@ -60,28 +60,16 @@ class MyGallery extends ET_Builder_Module {
 		return $photos;
 	}
 
-	public function register_api_endpoint() {
-		register_rest_route(
-			'divify/v1',
-			'my-gallery',
-			array(
-				'methods' => WP_REST_Server::READABLE,
-				'callback' => 'get_json_response',
-				'permission_callback' => '__return_true'
-			)
-		);
-	}
-
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
-			'<h1 class="my-gallery-heading">%1$s</h1>
-			<div class="my-gallery-content">%2$s</div>
-			<div class="my-gallery">%3$s</div>',
+			'<h1 class="combo-box-heading">%1$s</h1>
+			<div class="combo-box-content">%2$s</div>
+			<div class="combo-box">%3$s</div>',
 			esc_html( $this->props['heading'] ),
 			$this->props['content'],
-			$this->get_photos()
+			$this->get_cpt()
 		);
 	}
 }
 
-new MyGallery;
+new ComboBox;
