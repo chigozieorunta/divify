@@ -45,7 +45,7 @@ class MyGallery extends ET_Builder_Module {
 
 				$image = wp_get_attachment_image_src( 
 					get_post_thumbnail_id( $post->ID ), 
-					'medium'
+					'full'
 				);
 
 				$photo_image = $image[0];
