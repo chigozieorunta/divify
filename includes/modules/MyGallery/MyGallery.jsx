@@ -1,6 +1,27 @@
 import React, { Component, Fragment } from 'react';
 	
 import './gallery.css';
+
+class Photo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      photo: {}
+    }
+  }
+
+  componentDidMount() {
+    fetch(`http://localhost:10003/wp-json/wp/v2/media/${this.props.id}`)
+      .then((response) => response.json())
+      .then(singlePhoto => {
+        this.setState({ photo: singlePhoto });
+      });
+  }
+
+  render() {
+    return <img src={this.state.photo.source_url} alt={this.props.alt} />;
+  }
+}
 	
 class MyGallery extends Component {
 	
@@ -11,7 +32,7 @@ class MyGallery extends Component {
   }
 
   componentDidMount() {
-    fetch('http://yoursite.com/wp-json/wp/v2/gallery')
+    fetch('http://localhost:10003/wp-json/wp/v2/gallery')
     .then((response) => response.json())
     .then(allPhotos => {
         this.setState({ photos: allPhotos });
@@ -26,8 +47,8 @@ class MyGallery extends Component {
 			  <div className="my-gallery-content">{this.props.content()}</div>
 			  <div className="my-gallery">
 				  {this.state.photos.map((photo) => (
-					  <div>
-					  <img src={photo.id} alt={photo.id} />
+					  <div key={photo.id}>
+					  <Photo id={photo.featured_media} alt={photo.title.rendered} />
 					  <p>{photo.title.rendered}</p>
 					  </div>
 				  ))}
