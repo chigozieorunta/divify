@@ -13,7 +13,9 @@ class MyGallery extends ET_Builder_Module {
 			wp_enqueue_style( 'my-gallery', './gallery.css' );
 		});
 
-		add_action ( 'rest_api_init', 'register_api_endpoint' );
+		add_action( 'init', [ $this, 'register_gallery_post_type' ] );
+
+		register_activation_hook( __FILE__, 'rewrite_flush' );
 	}
 
 	public function get_fields() {
@@ -57,32 +59,36 @@ class MyGallery extends ET_Builder_Module {
 					$photo_title
 				);
 
-				$this->photos[] = array(
-					'id'    => $post->ID,
-					'title' => $photo_title,
-					'image' => $photo_image
-				);
-
 			}
 
 		}
 		return $photos;
 	}
 
-	public function register_api_endpoint() {
-		register_rest_route(
-			'divify/v1',
-			'/my-gallery',
-			array(
-				'methods' => WP_REST_Server::READABLE,
-				'callback' => [ $this, 'get_json_response' ],
-				'permission_callback' => '__return_true'
+	public function register_gallery_post_type() {
+		register_post_type( 'gallery', array(
+			'labels'             => $labels,
+			'description'        => 'My Gallery.',
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'gallery' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => 20,
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
+			'taxonomies'         => array( 'category' ),
+			'show_in_rest'       => true
 			)
 		);
 	}
-
-	public function get_json_response() {
-		return json_decode( $this->photos );
+	
+	public function rewrite_flush() {
+    	$this->register_gallery_post_type();
+    	flush_rewrite_rules();
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
