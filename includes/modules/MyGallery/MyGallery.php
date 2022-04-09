@@ -12,10 +12,6 @@ class MyGallery extends ET_Builder_Module {
 		add_action( 'wp_enqueue_scripts', function() {
 			wp_enqueue_style( 'my-gallery', './gallery.css' );
 		});
-
-		add_action( 'init', [ $this, 'register_gallery_post_type' ] );
-
-		register_activation_hook( __FILE__, 'rewrite_flush' );
 	}
 
 	public function get_fields() {
@@ -63,32 +59,6 @@ class MyGallery extends ET_Builder_Module {
 
 		}
 		return $photos;
-	}
-
-	public function register_gallery_post_type() {
-		register_post_type( 'gallery', array(
-			'labels'             => $labels,
-			'description'        => 'My Gallery.',
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'gallery' ),
-			'capability_type'    => 'post',
-			'has_archive'        => true,
-			'hierarchical'       => false,
-			'menu_position'      => 20,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
-			'taxonomies'         => array( 'category' ),
-			'show_in_rest'       => true
-			)
-		);
-	}
-	
-	public function rewrite_flush() {
-    	$this->register_gallery_post_type();
-    	flush_rewrite_rules();
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
