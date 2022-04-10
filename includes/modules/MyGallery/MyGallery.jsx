@@ -11,7 +11,7 @@ class Photo extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:10003/wp-json/wp/v2/media/${this.props.id}`)
+    fetch(`http://divify.local/wp-json/wp/v2/media/${this.props.id}`)
       .then((response) => response.json())
       .then(singlePhoto => {
         this.setState({ photo: singlePhoto });
@@ -32,7 +32,7 @@ class MyGallery extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:10003/wp-json/wp/v2/gallery')
+    fetch('http://divify.local/wp-json/wp/v2/gallery')
     .then((response) => response.json())
     .then(allPhotos => {
         this.setState({ photos: allPhotos });
