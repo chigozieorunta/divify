@@ -11,3 +11,7 @@ This module assumes you've got WordPress and the Divi theme set up. You'll also 
 - WordPress 5.0+
 - CPT UI (WordPress Plugin)
 - Divi Theme
+
+## Screenshot
+
+<img src="./screenshot.png" />
