@@ -15,20 +15,17 @@ class ComboBox extends ET_Builder_Module {
 
 	public function get_fields() {
 		return array(
-			'heading'     => array(
-				'label'           => esc_html__( 'Heading', 'combo-box' ),
-				'type'            => 'text',
+			'post_type' => array(
+				'label'           => esc_html__( 'Post Type', 'combo-box' ),
+				'type'            => 'select',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Input your desired heading here.', 'combo-box' ),
+				'options'         => array(
+					'property' => esc_html__( 'Property', 'combo-box' ),
+					'combobox' => esc_html__( 'Combobox', 'combo-box' ),
+				),
+				'description'     => esc_html__( 'Select your desired custom post type', 'combo-box' ),
 				'toggle_slug'     => 'main_content',
-			),
-			'content'     => array(
-				'label'           => esc_html__( 'Content', 'combo-box' ),
-				'type'            => 'tiny_mce',
-				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'combo-box' ),
-				'toggle_slug'     => 'main_content',
-			),
+			)
 		);
 	}
 
