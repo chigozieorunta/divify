@@ -13,6 +13,22 @@ class ComboBox extends ET_Builder_Module {
 		});
 	}
 
+	public function get_custom_post_types() {
+		$args = array(
+			'public' => true,
+		);
+
+		$post_types = get_post_types( $args, 'objects' );
+ 
+		foreach ( $post_types as $post_type_obj ) {
+			$labels = get_post_type_labels( $post_type_obj );
+
+			$options[$post_type_obj->name] = esc_html__( $labels->name , 'combo-box' )
+		}
+
+		return $options;
+	}
+
 	public function get_fields() {
 		return array(
 			'post_type' => array(
