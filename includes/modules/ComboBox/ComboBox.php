@@ -35,10 +35,7 @@ class ComboBox extends ET_Builder_Module {
 				'label'           => esc_html__( 'Post Type', 'combo-box' ),
 				'type'            => 'select',
 				'option_category' => 'basic_option',
-				'options'         => array(
-					'property' => esc_html__( 'Property', 'combo-box' ),
-					'combobox' => esc_html__( 'Combobox', 'combo-box' ),
-				),
+				'options'         => $this->get_custom_post_types(),
 				'description'     => esc_html__( 'Select your desired custom post type', 'combo-box' ),
 				'toggle_slug'     => 'main_content',
 			)
