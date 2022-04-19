@@ -23,7 +23,7 @@ class ComboBox extends ET_Builder_Module {
 		foreach ( $post_types as $post_type_obj ) {
 			$labels = get_post_type_labels( $post_type_obj );
 
-			$options[$post_type_obj->name] = esc_html__( $labels->name , 'combo-box' )
+			$options[$post_type_obj->name] = esc_html__( $labels->name , 'combo-box' );
 		}
 
 		return $options;
