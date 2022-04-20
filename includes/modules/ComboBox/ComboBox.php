@@ -42,32 +42,29 @@ class ComboBox extends ET_Builder_Module {
 		);
 	}
 
-	public function get_cpt() {
-		$query = new WP_Query( array( 'post_type' => 'property' ) );
+	public function get_custom_posts() {
+		$query = new WP_Query( array( 'post_type' => $this->props['post_type'] ) );
 		$posts = $query->posts;
 
 		foreach($posts as $post) {
 
-			if ( has_post_thumbnail( $post->ID ) ) {
+			$image = wp_get_attachment_image_src( 
+				get_post_thumbnail_id( $post->ID ), 
+				'medium'
+			);
 
-				$image = wp_get_attachment_image_src( 
-					get_post_thumbnail_id( $post->ID ), 
-					'medium'
-				);
+			$post_image = $image[0];
+			$post_title = get_the_title( $post->ID );
 
-				$photo_image = $image[0];
-				$photo_title = get_the_title( $post->ID );
-
-				$photos .= sprintf( 
-					'<div><img src="%1$s"><p>%2$s</p></div>',
-					$photo_image,
-					$photo_title
-				);
-
-			}
+			$custom_posts .= sprintf( 
+				'<div><img src="%1$s"><p>%2$s</p></div>',
+				$photo_image,
+				$photo_title
+			);
 
 		}
-		return $photos;
+		
+		return $custom_posts;
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
