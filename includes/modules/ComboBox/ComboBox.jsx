@@ -29,7 +29,9 @@ class ComboBox extends Component {
                 <Image id={combo.featured_media} alt={combo.title.rendered} />
               </a>
               <div>
-                <h3>{combo.title.rendered}</h3>
+                <h3>
+                  <a href={combo.link}>{combo.title.rendered}</a>
+                </h3>
                 <div>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, iusto sunt! Modi, saepe, dolorem magni earum officia doloremque harum vitae nesciunt architecto soluta corrupti quo?
                 </div>
