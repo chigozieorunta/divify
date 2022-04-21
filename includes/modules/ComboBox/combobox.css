@@ -1,3 +1,14 @@
-.combo-box-heading {
+.combo-box {
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.combo-box > div {
+	width: calc(50% - 25px);
+	display: flex;
+}
+
+.combo-box > div > * {
+	width: calc(50% - 25px);
 }
