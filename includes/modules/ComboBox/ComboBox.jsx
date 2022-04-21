@@ -23,24 +23,20 @@ class ComboBox extends Component {
     return (
 		  <Fragment>
 			  <section class="combo-box">
-          {this.state.combos.map((combo) => {
-            const Content = combo.content.rendered;
-            return (
+          {this.state.combos.map((combo) => (
+            <div>
+              <a href={combo.link}>
+                <Image id={combo.featured_media} alt={combo.title.rendered} />
+              </a>
               <div>
-                <a href={combo.link}>
-                  <Image id={combo.featured_media} alt={combo.title.rendered} />
-                </a>
-                <div>
-                  <h3>
-                    <a href={combo.link}>{combo.title.rendered}</a>
-                  </h3>
-                  <div>
-                    <Content />
-                  </div>
+                <h3>
+                  <a href={combo.link}>{combo.title.rendered}</a>
+                </h3>
+                <div dangerouslySetInnerHTML={{ __html: combo.content.rendered }}>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
 			  </section>
 		  </Fragment>
     );
