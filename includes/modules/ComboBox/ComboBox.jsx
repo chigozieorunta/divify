@@ -25,7 +25,7 @@ class ComboBox extends Component {
 			  <section class="combo-box">
 				  {this.state.combos.map((combo) => (
             <div>
-              <a href="google.html">
+              <a href={combo.link}>
                 <Image id={combo.featured_media} alt={combo.title.rendered} />
               </a>
               <div>
