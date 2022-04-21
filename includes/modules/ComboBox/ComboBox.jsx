@@ -11,7 +11,7 @@ class ComboBox extends Component {
   }
 
   componentDidMount() {
-    fetch('http://yoursite.com/wp-json/wp/v2/property')
+    fetch(`http://divify.local/wp-json/wp/v2/${this.props.post_type}`)
     .then((response) => response.json())
     .then(allCombos => {
         this.setState({ combos: allCombos });
@@ -21,17 +21,22 @@ class ComboBox extends Component {
   	
   render() {
     return (
-		<Fragment>
-			<h1 className="combo-box-heading">{this.props.heading}</h1>
-			  <div className="combo-box-content">{this.props.content()}</div>
-			  <div className="combo-box">
+		  <Fragment>
+			  <section class="combo-box">
 				  {this.state.combos.map((combo) => (
-					  <div>
-					  <img src={combo.id} alt={combo.id} />
-					  <p>{combo.title.rendered}</p>
-					  </div>
+            <div>
+              <a href="google.html">
+                <Image id={combo.featured_media} alt={combo.title.rendered} />
+              </a>
+              <div>
+                <h3>{combo.title.rendered}</h3>
+                <div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, iusto sunt! Modi, saepe, dolorem magni earum officia doloremque harum vitae nesciunt architecto soluta corrupti quo?
+                </div>
+              </div>
+            </div>
 				  ))}
-			  </div>
+			  </section>
 		  </Fragment>
     );
   }
