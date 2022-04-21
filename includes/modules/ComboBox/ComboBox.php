@@ -57,6 +57,12 @@ class ComboBox extends ET_Builder_Module {
 			$post_title   = get_the_title( $post->ID );
 			$post_excerpt = get_the_excerpt( $post->ID );
 
+			$post_title = sprintf( 
+				'<a href="%2$s">%1$s</a>',
+				$post_title,
+				get_the_permalink( $post->ID )
+			);
+
 			$post_details = sprintf(
 				'<div><h3>%1$s</h3><div>%2$s</div></div>',
 				$post_title,
