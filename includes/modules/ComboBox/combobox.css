@@ -22,6 +22,6 @@
 
 @media only screen and (max-width: 480px) {
 	.combo-box > div {
-		width: calc(50% - 25px);
+		width: calc(100% - 25px);
 	}
 }
