@@ -53,13 +53,20 @@ class ComboBox extends ET_Builder_Module {
 				'medium'
 			);
 
-			$post_image = $image[0];
-			$post_title = get_the_title( $post->ID );
+			$post_image   = $image[0];
+			$post_title   = get_the_title( $post->ID );
+			$post_excerpt = get_the_excerpt( $post->ID );
+
+			$post_details = sprintf(
+				'<div><h3>%1$s</h3><div>%2$s</div></div>',
+				$post_title,
+				$post_excerpt
+			);
 
 			$custom_posts .= sprintf( 
-				'<div><img src="%1$s"><p>%2$s</p></div>',
+				'<div><img src="%1$s">%2$s</div>',
 				$post_image,
-				$post_title
+				$post_details
 			);
 
 		}
@@ -69,12 +76,8 @@ class ComboBox extends ET_Builder_Module {
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
-			'<h1 class="combo-box-heading">%1$s</h1>
-			<div class="combo-box-content">%2$s</div>
-			<div class="combo-box">%3$s</div>',
-			esc_html( $this->props['heading'] ),
-			$this->props['content'],
-			$this->get_cpt()
+			'<section class="combo-box">%1$s</section>',
+			$this->get_custom_posts()
 		);
 	}
 }
