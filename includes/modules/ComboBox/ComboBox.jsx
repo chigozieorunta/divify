@@ -41,5 +41,26 @@ class ComboBox extends Component {
     );
   }
 }
+
+class Image extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: {}
+    }
+  }
+
+  componentDidMount() {
+    fetch(`http://divify.local/wp-json/wp/v2/media/${this.props.id}`)
+      .then((response) => response.json())
+      .then(singleImage => {
+        this.setState({ image: singleImage });
+      });
+  }
+
+  render() {
+    return <img src={this.state.image.source_url} alt={this.props.alt} />;
+  }
+}
           	
 export default ComboBox;
