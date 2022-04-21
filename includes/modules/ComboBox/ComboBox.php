@@ -58,12 +58,12 @@ class ComboBox extends ET_Builder_Module {
 
 			$custom_posts .= sprintf( 
 				'<div><img src="%1$s"><p>%2$s</p></div>',
-				$photo_image,
-				$photo_title
+				$post_image,
+				$post_title
 			);
 
 		}
-		
+
 		return $custom_posts;
 	}
 
