@@ -56,11 +56,18 @@ class ComboBox extends ET_Builder_Module {
 			$post_image   = $image[0];
 			$post_title   = get_the_title( $post->ID );
 			$post_excerpt = get_the_excerpt( $post->ID );
+			$post_url     = get_the_permalink( $post->ID );
+
+			$post_image = sprintf( 
+				'<a href="%2$s"><img src="%1$s"></a>',
+				$post_image,
+				$post_url
+			);
 
 			$post_title = sprintf( 
 				'<a href="%2$s">%1$s</a>',
 				$post_title,
-				get_the_permalink( $post->ID )
+				$post_url
 			);
 
 			$post_details = sprintf(
@@ -70,7 +77,7 @@ class ComboBox extends ET_Builder_Module {
 			);
 
 			$custom_posts .= sprintf( 
-				'<div><img src="%1$s">%2$s</div>',
+				'<div>%1$s%2$s</div>',
 				$post_image,
 				$post_details
 			);
