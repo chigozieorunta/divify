@@ -69,6 +69,11 @@ class MyGallery extends ET_Builder_Module {
 		);
 	}
 
+	/**
+	 * Render Right Arrow
+	 *
+	 * @return string
+	 */
 	public function get_overlay_right_arrow() {
 		return sprintf(
 			'<span class="my-gallery-arrow-right">%1$s</span>',
