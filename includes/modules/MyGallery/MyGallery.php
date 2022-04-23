@@ -2,8 +2,11 @@
 
 class MyGallery extends ET_Builder_Module {
 
-	public $slug       = 'my_gallery';
-	public $vb_support = 'on';
+	/**
+	 * Private instance of MyGallery
+	 *
+	 * @var array
+	 */
 	private $photos = [];
 
 	/**
