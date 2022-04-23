@@ -15,6 +15,11 @@ class MyGallery extends ET_Builder_Module {
 		});
 	}
 
+	/**
+	 * Get Fields
+	 *
+	 * @return string
+	 */
 	public function get_fields() {
 		return array(
 			'heading'     => array(
