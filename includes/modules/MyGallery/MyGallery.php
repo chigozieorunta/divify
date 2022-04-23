@@ -62,6 +62,11 @@ class MyGallery extends ET_Builder_Module {
 		return $photos;
 	}
 
+	/**
+	 * Render Left Arrow
+	 *
+	 * @return string
+	 */
 	public function get_overlay_left_arrow() {
 		return sprintf(
 			'<span class="my-gallery-arrow-left">%1$s</span>',
