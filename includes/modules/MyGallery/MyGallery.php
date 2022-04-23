@@ -1,7 +1,6 @@
 <?php
 
 class MyGallery extends ET_Builder_Module {
-
 	/**
 	 * Private instance of MyGallery
 	 *
@@ -14,7 +13,14 @@ class MyGallery extends ET_Builder_Module {
 	 *
 	 * @var string
 	 */
-	public $slug       = 'my_gallery';
+	public $slug = 'my_gallery';
+
+	/**
+	 * VB Support
+	 *
+	 * @var string
+	 */
+	public $vb_support = 'on';
 
 	/**
 	 * Constructor
