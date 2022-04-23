@@ -34,6 +34,11 @@ class MyGallery extends ET_Builder_Module {
 		);
 	}
 
+	/**
+	 * Get Photos
+	 *
+	 * @return string
+	 */
 	public function get_photos() {
 		$query = new WP_Query( array( 'post_type' => 'gallery' ) );
 		$posts = $query->posts;
@@ -63,7 +68,7 @@ class MyGallery extends ET_Builder_Module {
 	}
 
 	/**
-	 * Render Left Arrow
+	 * Get Left Arrow
 	 *
 	 * @return string
 	 */
@@ -75,7 +80,7 @@ class MyGallery extends ET_Builder_Module {
 	}
 
 	/**
-	 * Render Right Arrow
+	 * Get Right Arrow
 	 *
 	 * @return string
 	 */
@@ -87,7 +92,7 @@ class MyGallery extends ET_Builder_Module {
 	}
 
 	/**
-	 * Render Overlay
+	 * Get Overlay
 	 *
 	 * @return string
 	 */
