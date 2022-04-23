@@ -10,6 +10,13 @@ class MyGallery extends ET_Builder_Module {
 	private $photos = [];
 
 	/**
+	 * Module Slug
+	 *
+	 * @var string
+	 */
+	public $slug       = 'my_gallery';
+
+	/**
 	 * Constructor
 	 *
 	 * @return void
