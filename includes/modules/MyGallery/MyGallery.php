@@ -6,6 +6,11 @@ class MyGallery extends ET_Builder_Module {
 	public $vb_support = 'on';
 	private $photos = [];
 
+	/**
+	 * Constructor
+	 *
+	 * @return void
+	 */
 	public function init() {
 		$this->name = esc_html__( 'My Gallery', 'my-gallery' );
 
