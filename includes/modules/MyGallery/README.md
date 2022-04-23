@@ -15,3 +15,10 @@ This module assumes you've got WordPress and the Divi theme set up. You'll also 
 ## Screenshot
 
 <img src="./screenshot.png" />
+
+## Todo
+
+- Image Title (shown underneath image) on Overlay
+- Cancel button on top right of Overlay
+- Changed dynamic URL used on React components
+- Add Drop down list box (Select box) to display post types (gallery, post, page)
