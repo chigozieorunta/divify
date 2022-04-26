@@ -11,7 +11,7 @@ class MyGallery extends ET_Builder_Module {
 
 		add_action( 'wp_enqueue_scripts', function() {
 			wp_enqueue_style( 'my-gallery', plugin_dir_url( __FILE__ ). './gallery.css' );
-			wp_enqueue_script( 'my-gallery', plugin_dir_url( __FILE__ ).  './gallery.js', array('jquery') );
+			wp_enqueue_script( 'my-gallery', plugin_dir_url( __FILE__ ).  './gallery.js', array( 'jquery' ) );
 		});
 	}
 
@@ -62,8 +62,27 @@ class MyGallery extends ET_Builder_Module {
 		return $photos;
 	}
 
+	public function get_overlay_left_arrow() {
+		return sprintf(
+			'<span class="my-gallery-arrow-left">%1$s</span>',
+			'<'
+		);
+	}
+
+	public function get_overlay_right_arrow() {
+		return sprintf(
+			'<span class="my-gallery-arrow-right">%1$s</span>',
+			'>'
+		);
+	}
+
 	public function get_overlay() {
-		return '<span><</span><img src=""/><span>></span>';
+		return sprintf( 
+			'%1$s%3$s%2$s',
+			$this->get_overlay_left_arrow(),
+			$this->get_overlay_right_arrow(),
+			'<img src=""/>'
+		);
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
