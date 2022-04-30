@@ -76,6 +76,11 @@ class MyGallery extends ET_Builder_Module {
 		);
 	}
 
+	/**
+	 * Render Overlay
+	 *
+	 * @return string
+	 */
 	public function get_overlay() {
 		return sprintf( 
 			'%1$s%3$s%2$s',
