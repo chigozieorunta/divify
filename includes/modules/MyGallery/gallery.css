@@ -43,3 +43,11 @@
     align-items: center;
     z-index: 1000000;
 }
+
+.my-gallery-overlay > span {
+    color: #fff;
+    font-size: 72px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2000000;
+}
