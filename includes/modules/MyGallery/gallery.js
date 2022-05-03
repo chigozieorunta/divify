@@ -3,5 +3,9 @@
 	   $('.my-gallery > li > img').click(function () {
 		   $('.my-gallery-overlay').fadeIn('slow');
 	   });
+
+	   $('.my-gallery-overlay').click(function () {
+		   $(this).fadeOut('slow');
+	   });
    });
 })(jQuery);
