@@ -62,14 +62,19 @@ class MyGallery extends ET_Builder_Module {
 		return $photos;
 	}
 
+	public function get_overlay() {
+		return '<span><</span><img src=""/><span>></span>';
+	}
+
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
 			'<h1 class="my-gallery-heading">%1$s</h1>
 			<div class="my-gallery-content">%2$s</div>
-			<div class="my-gallery-overlay"><img src=""/></div>
-			<ul class="my-gallery">%3$s</ul>',
+			<div class="my-gallery-overlay">%3$s</div>
+			<ul class="my-gallery">%4$s</ul>',
 			esc_html( $this->props['heading'] ),
 			$this->props['content'],
+			$this->get_overlay(),
 			$this->get_photos()
 		);
 	}
