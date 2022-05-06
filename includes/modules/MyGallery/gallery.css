@@ -40,4 +40,5 @@
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     z-index: 10000000000;
+    display: none;
 }
