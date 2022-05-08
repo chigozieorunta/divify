@@ -48,8 +48,8 @@ class MyGallery extends Component {
 			  <ul className="my-gallery">
 				  {this.state.photos.map((photo) => (
 					  <li key={photo.id}>
-					  <Photo id={photo.featured_media} alt={photo.title.rendered} />
-					  <p>{photo.title.rendered}</p>
+              <Photo id={photo.featured_media} alt={photo.title.rendered} />
+              <p>{photo.title.rendered}</p>
 					  </li>
 				  ))}
 			  </ul>
