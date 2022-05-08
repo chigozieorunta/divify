@@ -16,6 +16,7 @@
     width: 22.5%;
     box-sizing: border-box;
     margin-bottom: 25px;
+    list-style: none;
 }
 
 .my-gallery > li > img {
