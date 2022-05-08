@@ -47,10 +47,10 @@ class MyGallery extends Component {
 			  <div className="my-gallery-content">{this.props.content()}</div>
 			  <ul className="my-gallery">
 				  {this.state.photos.map((photo) => (
-					  <div key={photo.id}>
+					  <li key={photo.id}>
 					  <Photo id={photo.featured_media} alt={photo.title.rendered} />
 					  <p>{photo.title.rendered}</p>
-					  </div>
+					  </li>
 				  ))}
 			  </ul>
 		  </Fragment>
