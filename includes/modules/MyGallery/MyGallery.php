@@ -11,6 +11,7 @@ class MyGallery extends ET_Builder_Module {
 
 		add_action( 'wp_enqueue_scripts', function() {
 			wp_enqueue_style( 'my-gallery', './gallery.css' );
+			wp_enqueue_script( 'my-gallery', '/gallery.js', array('jquery') );
 		});
 	}
 
