@@ -10,20 +10,20 @@
     margin-top: 2em;
 }
 
-.my-gallery div {
+.my-gallery > li {
     width: 22.5%;
     box-sizing: border-box;
     margin-bottom: 25px;
 }
 
-.my-gallery div > img {
+.my-gallery > li > img {
     margin: 0 auto;
     max-width: 100%;
     height: auto;
     cursor: pointer;
 }
 
-.my-gallery div > p {
+.my-gallery > li > p {
     margin-top: 0.5em;
     text-align: center;
 }
