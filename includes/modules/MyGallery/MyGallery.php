@@ -10,8 +10,8 @@ class MyGallery extends ET_Builder_Module {
 		$this->name = esc_html__( 'My Gallery', 'my-gallery' );
 
 		add_action( 'wp_enqueue_scripts', function() {
-			wp_enqueue_style( 'my-gallery', './gallery.css' );
-			wp_enqueue_script( 'my-gallery', '/gallery.js', array('jquery') );
+			wp_enqueue_style( 'my-gallery', plugin_dir_url( __FILE__ ). './gallery.css' );
+			wp_enqueue_script( 'my-gallery', plugin_dir_url( __FILE__ ).  './gallery.js', array('jquery') );
 		});
 	}
 
