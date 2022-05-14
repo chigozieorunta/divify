@@ -5,6 +5,11 @@ class ComboBox extends ET_Builder_Module {
 	public $slug       = 'combo_box';
 	public $vb_support = 'on';
 
+	/**
+	 * Init function to fire when module loads
+	 *
+	 * @return void
+	 */
 	public function init() {
 		$this->name = esc_html__( 'Combo Box', 'combo-box' );
 
@@ -13,6 +18,11 @@ class ComboBox extends ET_Builder_Module {
 		});
 	}
 
+	/**
+	 * Get all post types names and slugs
+	 *
+	 * @return array
+	 */
 	public function get_custom_post_types() {
 		$args = array(
 			'public' => true,
@@ -29,6 +39,11 @@ class ComboBox extends ET_Builder_Module {
 		return $options;
 	}
 
+	/**
+	 * Get Fields for user selection
+	 *
+	 * @return array
+	 */
 	public function get_fields() {
 		return array(
 			'post_type' => array(
@@ -42,6 +57,11 @@ class ComboBox extends ET_Builder_Module {
 		);
 	}
 
+	/**
+	 * Get CPT data (title, featured image, permalink)
+	 *
+	 * @return string
+	 */
 	public function get_custom_posts() {
 		$query = new WP_Query( array( 'post_type' => $this->props['post_type'] ) );
 		$posts = $query->posts;
@@ -87,6 +107,14 @@ class ComboBox extends ET_Builder_Module {
 		return $custom_posts;
 	}
 
+	/**
+	 * Render Method
+	 *
+	 * @param object $unprocessed_props
+	 * @param string $content
+	 * @param string $render_slug
+	 * @return void
+	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
 			'<section class="combo-box">%1$s</section>',
