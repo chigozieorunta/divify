@@ -2,7 +2,18 @@
 
 class ComboBox extends ET_Builder_Module {
 
-	public $slug       = 'combo_box';
+	/**
+	 * Module Slug
+	 *
+	 * @var string
+	 */
+	public $slug = 'combo_box';
+
+	/**
+	 * VB Support
+	 *
+	 * @var string
+	 */
 	public $vb_support = 'on';
 
 	/**
