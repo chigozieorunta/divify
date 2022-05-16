@@ -134,9 +134,9 @@ class MyGallery extends ET_Builder_Module {
 	/**
 	 * Render Method for Divi plugin
 	 *
-	 * @param array $unprocessed_props Props.
-	 * @param array $content Content.
-	 * @param array $render_slug Slug.
+	 * @param object $unprocessed_props Props.
+	 * @param string $content Content.
+	 * @param string $render_slug Slug.
 	 *
 	 * @return string
 	 */
