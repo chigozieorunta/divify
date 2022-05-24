@@ -52,3 +52,12 @@
     z-index: 2000000;
     margin: 0 35px;
 }
+
+.my-gallery-close-btn {
+    position: fixed;
+    top: 1em; right: 1em;
+    font-size: 36px;
+    cursor: context-menu;
+    color: #fff;
+    z-index: 3000000;
+}
