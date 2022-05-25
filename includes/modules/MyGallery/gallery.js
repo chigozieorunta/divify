@@ -18,8 +18,8 @@
 			$('.my-gallery-overlay > img').attr('src', images[counter]);
 		});
 
-		$('body').click(function () {
-			//$(this).fadeOut('slow');
+		$('.my-gallery-close-btn').click(function () {
+			$('.my-gallery-overlay').fadeOut('slow');
 		});
    });
 })(jQuery);
