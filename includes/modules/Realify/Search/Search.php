@@ -60,7 +60,7 @@ class Search extends ET_Builder_Module {
  
 		foreach ( $pages as $page ) {
 			$page_link           = get_page_link( $page->ID );
-			$options[$page_link] = esc_html__( $page->title , 'realify-search' );
+			$options[$page_link] = esc_html__( $page->post_title , 'realify-search' );
 		}
 
 		return $options;
