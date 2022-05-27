@@ -51,6 +51,22 @@ class Search extends ET_Builder_Module {
 	}
 
 	/**
+	 * Get all pages
+	 *
+	 * @return array
+	 */
+	public function get_pages() {
+		$pages = get_pages();
+ 
+		foreach ( $pages as $page ) {
+			$page_link           = get_page_link( $page->ID );
+			$options[$page_link] = esc_html__( $page->title , 'realify-search' );
+		}
+
+		return $options;
+	}
+
+	/**
 	 * Get Fields for user selection
 	 *
 	 * @return array
