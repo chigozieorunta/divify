@@ -44,3 +44,17 @@
 .realify_search li button:hover {
 	background: #333;
 }
+
+@media only screen and (max-width:968px) {
+	.realify_search li {
+		width: calc(50% - 15px) !important;
+		margin-bottom: 15px;
+	}
+}
+
+@media only screen and (max-width:768px) {
+	.realify_search li {
+		width: 100% !important;
+		margin-bottom: 15px;
+	}
+}
