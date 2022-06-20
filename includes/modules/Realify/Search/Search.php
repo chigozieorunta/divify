@@ -216,7 +216,7 @@ class Search extends ET_Builder_Module {
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
-			'<form method="get" action="%1$s">
+			'<form method="POST" action="%1$s">
 				<ul class="realify_search">
 					<li>%2$s</li>
 					<li>%3$s</li>
