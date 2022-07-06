@@ -86,7 +86,15 @@ class Search extends ET_Builder_Module {
 			);
 		}
 
-		return $options;
+		$categories = sprintf(
+			'<select name="property_category">
+				<option>Property</option>
+				%1$s
+			</select>',
+			$options
+		);
+
+		return $categories;
 	}
 
 	/**
@@ -111,7 +119,15 @@ class Search extends ET_Builder_Module {
 			);
 		}
 
-		return $options;
+		$locations = sprintf(
+			'<select name="property_city">
+				<option>Location</option>
+				%1$s
+			</select>',
+			$options
+		);
+
+		return $locations;
 	}
 
 	/**
@@ -202,18 +218,8 @@ class Search extends ET_Builder_Module {
 		return sprintf(
 			'<form method="post" action="%1$s">
 				<ul class="realify_search">
-					<li>
-						<select>
-							<option>Property</option>
-							%2$s
-						</select>
-					</li>
-					<li>
-						<select>
-							<option>Location</option>
-							%3$s
-						</select>
-					</li>
+					<li>%2$s</li>
+					<li>%3$s</li>
 					<li>
 						<select>
 							<option>Budget (N)</option>
