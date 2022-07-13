@@ -90,6 +90,31 @@ class Search extends ET_Builder_Module {
 	}
 
 	/**
+	 * Get all locations of properties
+	 *
+	 * @return array
+	 */
+	public function get_locations() {
+		$args = array(
+			'taxonomy'   => 'property_city',
+			'hide_empty' => false,
+			'orderby'    => 'ID',
+            'order'      => 'ASC',
+		);
+
+		$custom_terms = get_terms( $args );
+
+		foreach ( $custom_terms as $custom_term ) {
+			$options .= sprintf( 
+				'<option value="%1$s">%1$s</div>',
+				esc_html__( $custom_term->name , 'realify-search' )
+			);
+		}
+
+		return $options;
+	}
+
+	/**
 	 * Get Fields for user selection
 	 *
 	 * @return array
@@ -186,10 +211,7 @@ class Search extends ET_Builder_Module {
 					<li>
 						<select>
 							<option>Location</option>
-							<option>Lagos</option>
-							<option>Abuja</option>
-							<option>Port Harcourt</option>
-							<option>Kano</option>
+							%3$s
 						</select>
 					</li>
 					<li>
@@ -208,7 +230,8 @@ class Search extends ET_Builder_Module {
 				</ul>
 			</form>',
 			$this->props['result_page'] ?: home_url(),
-			$this->get_categories()
+			$this->get_categories(),
+			$this->get_locations()
 		);
 	}
 }
