@@ -4,6 +4,7 @@ import MyGallery from './Misc/MyGallery/MyGallery';
 import ComboBox from './Misc/ComboBox/ComboBox';
 
 import Search from './Realify/Search/Search';
+import Featured from './Realify/Featured/Featured';
 
 export default [
   HelloWorld,
@@ -11,5 +12,6 @@ export default [
   MyGallery,
   ComboBox,
 
-  Search
+  Search,
+  Featured
 ];
