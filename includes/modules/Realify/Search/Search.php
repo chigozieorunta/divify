@@ -67,6 +67,21 @@ class Search extends ET_Builder_Module {
 	}
 
 	/**
+	 * Get all categories of properties
+	 *
+	 * @return array
+	 */
+	public function get_categories() {
+		$custom_terms = get_terms( 'property_category' );
+ 
+		foreach ( $custom_terms as $custom_term ) {
+			$options[$custom_term->name] = esc_html__( $custom_term->name , 'realify-search' );
+		}
+
+		return $options;
+	}
+
+	/**
 	 * Get Fields for user selection
 	 *
 	 * @return array
@@ -87,6 +102,14 @@ class Search extends ET_Builder_Module {
 				'option_category' => 'basic_option',
 				'options'         => $this->get_pages(),
 				'description'     => esc_html__( 'Select your desired result page', 'realify-search' ),
+				'toggle_slug'     => 'main_content',
+			),
+			'property_category' => array(
+				'label'           => esc_html__( 'Property Categories', 'realify-search' ),
+				'type'            => 'select',
+				'option_category' => 'basic_option',
+				'options'         => $this->get_categories(),
+				'description'     => esc_html__( 'Select your desired categories', 'realify-search' ),
 				'toggle_slug'     => 'main_content',
 			)
 		);
