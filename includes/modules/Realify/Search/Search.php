@@ -72,10 +72,18 @@ class Search extends ET_Builder_Module {
 	 * @return array
 	 */
 	public function get_categories() {
-		$custom_terms = get_terms( 'property_category' );
- 
+		$args = array(
+			'taxonomy'   => 'property_category',
+			'hide_empty' => false,
+		);
+
+		$custom_terms = get_terms( $args );
+
 		foreach ( $custom_terms as $custom_term ) {
-			$options[$custom_term->name] = esc_html__( $custom_term->name , 'realify-search' );
+			$options .= sprintf( 
+				'<option value="%1$s">%1$s</div>',
+				esc_html__( $custom_term->name , 'realify-search' )
+			);
 		}
 
 		return $options;
@@ -104,14 +112,6 @@ class Search extends ET_Builder_Module {
 				'description'     => esc_html__( 'Select your desired result page', 'realify-search' ),
 				'toggle_slug'     => 'main_content',
 			),
-			'property_category' => array(
-				'label'           => esc_html__( 'Property Categories', 'realify-search' ),
-				'type'            => 'select',
-				'option_category' => 'basic_option',
-				'options'         => $this->get_categories(),
-				'description'     => esc_html__( 'Select your desired categories', 'realify-search' ),
-				'toggle_slug'     => 'main_content',
-			)
 		);
 	}
 
@@ -180,12 +180,7 @@ class Search extends ET_Builder_Module {
 					<li>
 						<select>
 							<option>Property</option>
-							<option>1 Room Apartment</option>
-							<option>2 Room Apartment</option>
-							<option>3 Room Apartment</option>
-							<option>4 Room Apartment</option>
-							<option>5 Room Apartment</option>
-							<option>6 Room Apartment</option>
+							%2$s
 						</select>
 					</li>
 					<li>
@@ -212,7 +207,8 @@ class Search extends ET_Builder_Module {
 					</li>
 				</ul>
 			</form>',
-			$this->props['result_page'] ?: home_url()
+			$this->props['result_page'] ?: home_url(),
+			$this->get_categories()
 		);
 	}
 }
