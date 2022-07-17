@@ -82,7 +82,7 @@ class Search extends ET_Builder_Module {
 				'toggle_slug'     => 'main_content',
 			),
 			'result_page' => array(
-				'label'           => esc_html__( 'Result Page', 'realify-search' ),
+				'label'           => esc_html__( 'Search Results Page', 'realify-search' ),
 				'type'            => 'select',
 				'option_category' => 'basic_option',
 				'options'         => $this->get_pages(),
@@ -152,7 +152,7 @@ class Search extends ET_Builder_Module {
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
-			'<form>
+			'<form method="post" action="%1$s">
 				<ul class="realify_search">
 					<li>
 						<select>
@@ -189,7 +189,7 @@ class Search extends ET_Builder_Module {
 					</li>
 				</ul>
 			</form>',
-			$this->get_custom_posts()
+			$this->props['result_page'] ?: home_url()
 		);
 	}
 }
