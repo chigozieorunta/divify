@@ -4,7 +4,9 @@ if ( ! class_exists( 'ET_Builder_Element' ) ) {
 	return;
 }
 
-$module_files = glob( __DIR__ . '/modules/*/*.php' );
+//$module_files = glob( __DIR__ . '/modules/**/*.php' );
+
+require_once __DIR__ . '/modules/Realify/Search/Search.php';
 
 // Load custom Divi Builder modules
 foreach ( (array) $module_files as $module_file ) {
