@@ -7,7 +7,7 @@ class Featured extends ET_Builder_Module {
 	 *
 	 * @var string
 	 */
-	public $slug = 'realify_search_module';
+	public $slug = 'realify_featured_module';
 
 	/**
 	 * VB Support
@@ -22,10 +22,10 @@ class Featured extends ET_Builder_Module {
 	 * @return void
 	 */
 	public function init() {
-		$this->name = esc_html__( 'Realify Featured', 'realify-search' );
+		$this->name = esc_html__( 'Realify Featured', 'realify-featured' );
 
 		add_action( 'wp_enqueue_scripts', function() {
-			wp_enqueue_style( 'realify-search', plugin_dir_url( __FILE__ ). './featured.css' );
+			wp_enqueue_style( 'realify-featured', plugin_dir_url( __FILE__ ). './featured.css' );
 		});
 	}
 
@@ -44,23 +44,7 @@ class Featured extends ET_Builder_Module {
 		foreach ( $post_types as $post_type_obj ) {
 			$labels = get_post_type_labels( $post_type_obj );
 
-			$options[$post_type_obj->name] = esc_html__( $labels->name , 'realify-search' );
-		}
-
-		return $options;
-	}
-
-	/**
-	 * Get all pages
-	 *
-	 * @return array
-	 */
-	public function get_pages() {
-		$pages = get_pages();
- 
-		foreach ( $pages as $page ) {
-			$page_link           = get_page_link( $page->ID );
-			$options[$page_link] = esc_html__( $page->post_title , 'realify-search' );
+			$options[$post_type_obj->name] = esc_html__( $labels->name , 'realify-featured' );
 		}
 
 		return $options;
@@ -216,28 +200,9 @@ class Featured extends ET_Builder_Module {
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
-			'<form method="POST" action="%1$s">
-				<ul class="realify_search">
-					<li>%2$s</li>
-					<li>%3$s</li>
-					<li>
-						<select>
-							<option>Budget (N)</option>
-							<option>10 million</option>
-							<option>25 million</option>
-							<option>50 million</option>
-							<option>75 million</option>
-							<option>100 million</option>
-						</select>
-					</li>
-					<li>
-						<button type="submit">Search</button>
-					</li>
-				</ul>
-			</form>',
-			$this->props['result_page'] ?: home_url(),
-			$this->get_categories(),
-			$this->get_locations()
+			'<ul class="realify_featured">
+				<li>Jesus is Lord...</li>
+			</ul>'
 		);
 	}
 }
