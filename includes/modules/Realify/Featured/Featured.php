@@ -153,7 +153,7 @@ class Featured extends ET_Builder_Module {
 
 			$image = wp_get_attachment_image_src( 
 				get_post_thumbnail_id( $post->ID ), 
-				'medium'
+				'large'
 			);
 
 			$post_image   = $image[0];
@@ -161,7 +161,25 @@ class Featured extends ET_Builder_Module {
 			$post_excerpt = get_the_excerpt( $post->ID );
 			$post_url     = get_the_permalink( $post->ID );
 
-			$post_image = sprintf( 
+			$custom_posts .= sprintf(
+				'<li>
+					<a href="%1$s" style="background-image: url(%2$s);">
+						<div>
+							<h2>3 Bedroom Semi-Detached Duplex</h2>
+							<p>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+									<path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+									<path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+								</svg>
+								<span>Lekki, Lagos</span>
+							</p>
+						</div>
+					</a>
+				</li>',
+				$post_url,
+				$post_image
+			);
+			/*$post_image = sprintf( 
 				'<a href="%2$s"><img src="%1$s"></a>',
 				$post_image,
 				$post_url
@@ -183,7 +201,7 @@ class Featured extends ET_Builder_Module {
 				'<div>%1$s%2$s</div>',
 				$post_image,
 				$post_details
-			);
+			);*/
 
 		}
 
@@ -201,8 +219,9 @@ class Featured extends ET_Builder_Module {
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		return sprintf(
 			'<ul class="realify_featured">
-				<li>Jesus is Lord...</li>
-			</ul>'
+				%1$s
+			</ul>',
+			$this->get_custom_posts()
 		);
 	}
 }
