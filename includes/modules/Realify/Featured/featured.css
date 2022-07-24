@@ -1,5 +1,64 @@
 .realify_featured {
 	display: flex;
-	margin: 0;
-	padding: 0;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.realify_featured li {
+	width: calc(50% - 40px);
+	list-style: none;
+	margin-bottom: 40px;
+	overflow: hidden;
+}
+
+.realify_featured li a {
+	display: flex;
+	background-size: cover;
+	height: 300px;
+	position: relative;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s;
+}
+
+.realify_featured li a:hover {
+	transform: scale(1.2);
+}
+
+.realify_featured li a div {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.realify_featured li a:hover div {
+	transform: scale(0.666);
+}
+
+/*.realify_featured li section > a {
+	width: 35%;
+	background: #789;
+	display: block;
+}*/
+
+.realify_featured li section > div > h2 {
+	color: #fff;
+    letter-spacing: -1px;
+	font-weight: 700;
+	font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.realify_featured li section > div > p {
+	display: flex;
+	align-items: center;
+	color: #fff;
+}
+
+.realify_featured li section > div > p > span {
+	margin-left: 0.5em;
 }
