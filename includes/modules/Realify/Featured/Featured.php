@@ -163,7 +163,8 @@ class Featured extends ET_Builder_Module {
 
 			$custom_posts .= sprintf(
 				'<li>
-					<a href="%1$s" style="background-image: url(%2$s);">
+					<a href="%1$s">
+						<div 
 						<div>
 							<h2>3 Bedroom Semi-Detached Duplex</h2>
 							<p>
