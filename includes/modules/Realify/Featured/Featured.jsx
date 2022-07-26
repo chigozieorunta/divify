@@ -7,11 +7,19 @@ class Featured extends Component {
   static slug = 'realify_featured_module';
 
   state = {
-    properties: []
+    properties: [],
+    number: this.props.post_number,
+    params: {
+      method: 'GET',
+      headers: {
+        "cache-control": 'no-cache',
+        pragma: 'no-cache',
+      }
+    }
   }
 
   componentDidMount() {
-    fetch(`http://realestateproperty.local/wp-json/wp/v2/${this.props.post_type}`)
+    fetch(`http://realestateproperty.local/wp-json/wp/v2/${this.props.post_type}?per_page=${this.state.number}`, this.state.params)
     .then((response) => response.json())
     .then(allProperties => {
         this.setState({ properties: allProperties });
