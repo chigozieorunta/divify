@@ -126,16 +126,19 @@ class Featured extends ET_Builder_Module {
 				'type'            => 'select',
 				'option_category' => 'basic_option',
 				'options'         => $this->get_custom_post_types(),
-				'description'     => esc_html__( 'Select your desired custom post type', 'realify-search' ),
+				'description'     => esc_html__( 'Select your desired custom post type', 'realify-featured' ),
 				'toggle_slug'     => 'main_content',
 			),
-			'result_page' => array(
-				'label'           => esc_html__( 'Search Results Page', 'realify-search' ),
-				'type'            => 'select',
+			'post_number' => array(
+				'label'           => esc_html__( 'Number of Properties', 'realify-search' ),
+				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'options'         => $this->get_pages(),
-				'description'     => esc_html__( 'Select your desired result page', 'realify-search' ),
+				'description'     => esc_html__( 'Select the number of properties you want displayed', 'realify-featured' ),
 				'toggle_slug'     => 'main_content',
+				'computed_affects' => array(
+					'__properties',
+				),
+				'event' => 'me'
 			),
 		);
 	}
@@ -146,7 +149,11 @@ class Featured extends ET_Builder_Module {
 	 * @return string
 	 */
 	public function get_custom_posts() {
-		$query = new WP_Query( array( 'post_type' => $this->props['post_type'] ) );
+		$query = new WP_Query( array( 
+				'post_type'      => $this->props['post_type'],
+				'posts_per_page' => $this->props['post_number'] ?: 6
+			)
+		);
 		$posts = $query->posts;
 
 		foreach($posts as $post) {
