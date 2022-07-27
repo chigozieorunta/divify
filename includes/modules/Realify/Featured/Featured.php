@@ -135,10 +135,6 @@ class Featured extends ET_Builder_Module {
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'Select the number of properties you want displayed', 'realify-featured' ),
 				'toggle_slug'     => 'main_content',
-				'computed_affects' => array(
-					'__properties',
-				),
-				'event' => 'me'
 			),
 		);
 	}
